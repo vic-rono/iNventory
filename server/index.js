@@ -10,6 +10,20 @@ dotenv.config({ path: "./config.env" });
 
 const app = express();
 
+//middlewares for handling data
+app.use(express.json())
+app.use(express.urlencoded({extended: false}))
+app.use(bodyParser.json())
+
+
+// app.use('/api/rooms', roomsRoute)
+//   app.use('/api/users', userRoute)
+//   app.use('/api/booking',bookRoute)
+
+app.get("/", (req, res)=>{
+  res.send("Home Page");
+})
+
 //
 const PORT = process.env.PORT || 5000;
 
