@@ -1,28 +1,27 @@
 //imports
-const dotenv = require("dotenv")
+const dotenv = require("dotenv");
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 dotenv.config({ path: "./config.env" });
 
-//initialize
-
+const userRoute = require("./routes/userRoute");
 const app = express();
 
-//middlewares for handling data
-app.use(express.json())
-app.use(express.urlencoded({extended: false}))
-app.use(bodyParser.json())
+//middlewares for handling any data format
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
+//Routes middleware
+//app.use('/api/rooms', roomsRoute)
+app.use("/api/users", userRoute);
+//app.use('/api/booking',bookRoute)
 
-// app.use('/api/rooms', roomsRoute)
-//   app.use('/api/users', userRoute)
-//   app.use('/api/booking',bookRoute)
-
-app.get("/", (req, res)=>{
+app.get("/", (req, res) => {
   res.send("Home Page");
-})
+});
 
 //
 const PORT = process.env.PORT || 5000;

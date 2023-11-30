@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-//basically creating a table
+//basically creating a table for user profile
 const userSchema = mongoose.Schema(
   {
     name: {
@@ -28,11 +28,11 @@ const userSchema = mongoose.Schema(
       type: String,
       default: "",
     },
-
+    //20627278 //6105311
     idnumber: {
-      type: Num,
+      type: Number,
       minLength: [7],
-      maxLength: [7],
+      maxLength: [8],
     },
   },
   {
