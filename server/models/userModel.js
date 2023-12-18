@@ -26,7 +26,7 @@ const userSchema = mongoose.Schema(
     },
     mobile: {
       type: String,
-      default: "",
+      default: "07XX XXX XXX",
     },
     //20627278 //6105311
     idnumber: {
@@ -34,12 +34,21 @@ const userSchema = mongoose.Schema(
       minLength: [7],
       maxLength: [8],
     },
+    image: {
+      type:String,
+      required: [true, "Add Your Profile Photo"],
+      default: "https://www.freepik.com/free-vector/illustration-user-avatar-icon_2606572.htm#query=avatar%20profile&position=16&from_view=search&track=ais&uuid=92b7f083-79f7-4a93-8495-c6b50e24cfd6"
+    },
+    designation: {
+      type: String,
+      required: [true, "Designation cannot be blank!"],
+    },
   },
   {
     timestamps: true,
   }
 );
 
-const userModel = mongoose.model("user", userSchema);
+const User = mongoose.model("User", userSchema);
 
-module.exports = userModel;
+module.exports = User;

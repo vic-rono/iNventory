@@ -7,6 +7,7 @@ const cors = require("cors");
 dotenv.config({ path: "./config.env" });
 
 const userRoute = require("./routes/userRoute");
+const errorHandler = require("./middleware/errorMiddleware")
 const app = express();
 
 //middlewares for handling any data format
@@ -23,10 +24,11 @@ app.get("/", (req, res) => {
   res.send("Home Page");
 });
 
-//
+//calling the error handler middleware
+app.use(errorHandler)
 const PORT = process.env.PORT || 5000;
 
-//connect to mongoDB
+//connect to mongoDB database
 
 mongoose
   .connect(process.env.mongodbUri, {
